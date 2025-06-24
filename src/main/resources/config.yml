@@ -1,0 +1,16 @@
+# Motd Settings
+motd:
+  normal: # Displays when everything is normal.
+    - "Welcome to the server!"
+    - "Enjoy your stay."
+  whitelist: # Displays when the server is whitelisted.
+    - "Server is currently whitelisted."
+    - "Please try again later."
+
+# Whitelist Settings
+whitelist:
+  enabled: true
+  kick-message: # A message to display for unwhitelisted and unwanted players.
+    - "&cYou are not whitelisted."
+  uuids: # The list of players that are whitelisted on the server.
+    - "15f0316d-84f0-404f-84ff-19fae1a0d289"
