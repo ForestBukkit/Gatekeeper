@@ -15,6 +15,7 @@ import org.bukkit.command.CommandSender;
 public class MotdCommand extends BaseCommand {
 
     @HelpCommand
+    @Default
     public void doHelp(CommandSender sender, CommandHelp help) {
         help.showHelp();
     }

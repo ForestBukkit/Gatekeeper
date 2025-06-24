@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 public class WhitelistCommand extends BaseCommand {
 
     @HelpCommand
+    @Default
     public void doHelp(CommandSender sender, CommandHelp help) {
         help.showHelp();
     }
