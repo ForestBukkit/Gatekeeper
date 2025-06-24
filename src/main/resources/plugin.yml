@@ -1,6 +1,7 @@
 name: GateKeeper
 version: '1.0-DEV'
 description: "A plugin for managing motds and whitelists on a minecraft network."
+website: https://github.com/ForestBukkit/GateKeeper
 authors: ["Ian Rich"]
 main: com.forestbukkit.gatekeeper.GateKeeper
 api-version: '1.20'
