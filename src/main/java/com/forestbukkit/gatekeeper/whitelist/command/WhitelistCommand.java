@@ -1,6 +1,7 @@
 package com.forestbukkit.gatekeeper.whitelist.command;
 
 import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
 import co.aikar.commands.annotation.*;
 import com.forestbukkit.gatekeeper.config.ConfigManager;
 import com.forestbukkit.gatekeeper.whitelist.WhitelistManager;
@@ -16,6 +17,11 @@ import java.util.stream.Collectors;
 @CommandPermission("basic.admin")
 @Description("Manages the server's whitelist.")
 public class WhitelistCommand extends BaseCommand {
+
+    @HelpCommand
+    public void doHelp(CommandSender sender, CommandHelp help) {
+        help.showHelp();
+    }
 
     @Subcommand("status")
     @Description("Show the current whitelist status and all whitelisted players")
@@ -58,7 +64,7 @@ public class WhitelistCommand extends BaseCommand {
     }
 
     @Subcommand("add")
-    @CommandCompletion("@players")
+    @CommandCompletion("@players @nothing")
     @Syntax("<player>")
     @Description("Add a player to the whitelist")
     public void onAdd(CommandSender sender, String playerName) {
@@ -77,7 +83,7 @@ public class WhitelistCommand extends BaseCommand {
     }
 
     @Subcommand("remove")
-    @CommandCompletion("@players")
+    @CommandCompletion("@players @nothing")
     @Syntax("<player>")
     @Description("Remove a player from the whitelist")
     public void onRemove(CommandSender sender, String playerName) {

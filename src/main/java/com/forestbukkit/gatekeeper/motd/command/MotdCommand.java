@@ -1,6 +1,7 @@
 package com.forestbukkit.gatekeeper.motd.command;
 
 import co.aikar.commands.BaseCommand;
+import co.aikar.commands.CommandHelp;
 import co.aikar.commands.annotation.*;
 import com.forestbukkit.gatekeeper.config.ConfigManager;
 import com.forestbukkit.gatekeeper.motd.MotdManager;
@@ -13,10 +14,15 @@ import org.bukkit.command.CommandSender;
 @CommandPermission("basic.admin")
 public class MotdCommand extends BaseCommand {
 
-    @Subcommand("viewLine")
-    @CommandCompletion("@motdTypes")
+    @HelpCommand
+    public void doHelp(CommandSender sender, CommandHelp help) {
+        help.showHelp();
+    }
+
+    @Subcommand("view")
+    @CommandCompletion("@motdTypes @nothing")
     @Syntax("<motdType>")
-    public void onViewLine(CommandSender sender, String motdType) {
+    public void onView(CommandSender sender, String motdType) {
         MotdType type = MotdType.valueOf(motdType.toUpperCase());
         String text = MotdManager.getMotdString(type);
 
@@ -24,7 +30,7 @@ public class MotdCommand extends BaseCommand {
     }
 
     @Subcommand("setLine")
-    @CommandCompletion("@motdTypes 1|2")
+    @CommandCompletion("@motdTypes 1|2 @nothing")
     @Syntax("<motdType> <line> <text>")
     public void onSetLine(CommandSender sender, String motdType, int line, String text) {
         sender.sendMessage(ChatColor.YELLOW + "Set line " + ChatColor.WHITE + line + ChatColor.YELLOW + " of " + ChatColor.WHITE + motdType + ChatColor.YELLOW + " to: " + ChatColor.WHITE + "\"" + ChatColor.translateAlternateColorCodes('&', ColorUtil.translateHexColors(text)) + ChatColor.WHITE + "\"");
