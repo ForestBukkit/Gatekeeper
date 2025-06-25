@@ -1,6 +1,9 @@
 package com.forestbukkit.gatekeeper.whitelist;
 
+import com.forestbukkit.gatekeeper.GateKeeper;
 import com.forestbukkit.gatekeeper.config.ConfigManager;
+import com.forestbukkit.gatekeeper.whitelist.listener.WhitelistListener;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -8,7 +11,7 @@ import java.util.UUID;
 public class WhitelistManager {
 
     public static void init() {
-
+        Bukkit.getPluginManager().registerEvents(new WhitelistListener(), GateKeeper.instance);
     }
 
     public static Boolean isWhitelisted(Player player) {
