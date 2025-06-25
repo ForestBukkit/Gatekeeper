@@ -28,16 +28,16 @@ public class WhitelistCommand extends BaseCommand {
     @Description("Show the current whitelist status and all whitelisted players")
     public void onStatus(CommandSender sender) {
         sender.sendMessage(ChatColor.YELLOW + "Whitelist is currently " + (ConfigManager.whitelistEnabled ? ChatColor.GREEN + "enabled" : ChatColor.RED + "disabled") + ChatColor.YELLOW + ".");
-        if (ConfigManager.whitelistedPlayers.isEmpty()) {
-            sender.sendMessage(ChatColor.RED + "No players are whitelisted.");
-            return;
-        }
     }
 
     @Subcommand("list")
     @Description("Get the list of whitelisted players")
     public void onList(CommandSender sender) {
         sender.sendMessage(ChatColor.YELLOW + "Whitelisted players:");
+        if (ConfigManager.whitelistedPlayers.isEmpty()) {
+            sender.sendMessage(ChatColor.RED + "No players are whitelisted.");
+            return;
+        }
         for (UUID uuid : ConfigManager.whitelistedPlayers) {
             OfflinePlayer p = Bukkit.getOfflinePlayer(uuid);
             sender.sendMessage(ChatColor.GRAY + " - " + ChatColor.WHITE + (p.getName() != null ? p.getName() : uuid));
