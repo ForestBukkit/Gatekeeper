@@ -2,6 +2,8 @@ package com.forestbukkit.gatekeeper.whitelist.listener;
 
 import com.forestbukkit.gatekeeper.config.ConfigManager;
 import com.forestbukkit.gatekeeper.whitelist.WhitelistManager;
+import net.minebo.cobalt.util.ColorUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +18,7 @@ public class WhitelistListener implements Listener {
         if(!ConfigManager.whitelistEnabled) return;
 
         if(!WhitelistManager.isWhitelisted(event.getUniqueId())) {
-            event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, String.join("\n", ConfigManager.whitelistKickMessage));
+            event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_WHITELIST, ChatColor.translateAlternateColorCodes('&', ColorUtil.translateHexColors(String.join("\n", ConfigManager.whitelistKickMessage))));
         }
 
     }
