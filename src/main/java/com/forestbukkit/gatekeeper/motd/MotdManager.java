@@ -20,7 +20,7 @@ public class MotdManager {
     public static String getMotdString(MotdType motdType) {
         List<String> lines = switch (motdType) {
             case NORMAL -> ConfigManager.normalLines;
-            case WHITELISTED -> ConfigManager.whitelistLines;
+            case WHITELIST -> ConfigManager.whitelistLines;
         };
 
         // Apply color translation to each line

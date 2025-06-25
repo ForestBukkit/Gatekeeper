@@ -16,7 +16,7 @@ public class MotdListener implements Listener {
         String motd;
 
         if (ConfigManager.whitelistEnabled) {
-            motd = MotdManager.getMotdString(MotdType.WHITELISTED);
+            motd = MotdManager.getMotdString(MotdType.WHITELIST);
         } else {
             motd = MotdManager.getMotdString(MotdType.NORMAL);
         }

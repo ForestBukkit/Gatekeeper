@@ -7,8 +7,10 @@ import com.forestbukkit.gatekeeper.config.ConfigManager;
 import com.forestbukkit.gatekeeper.motd.MotdManager;
 import com.forestbukkit.gatekeeper.motd.construct.MotdType;
 import net.minebo.cobalt.util.ColorUtil;
+import net.minebo.cobalt.util.format.StringFormatting;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.Nls;
 
 @CommandAlias("motd")
 @CommandPermission("basic.admin")
@@ -27,7 +29,7 @@ public class MotdCommand extends BaseCommand {
         MotdType type = MotdType.valueOf(motdType.toUpperCase());
         String text = MotdManager.getMotdString(type);
 
-        sender.sendMessage(motdType + ChatColor.YELLOW + "'s motd is set to: " + ChatColor.WHITE + "\"" + ChatColor.translateAlternateColorCodes('&', ColorUtil.translateHexColors(text)) + ChatColor.WHITE + "\"");
+        sender.sendMessage(StringFormatting.fixCapitalization(type.name()) + ChatColor.YELLOW + "motd is set to: " + ChatColor.WHITE + "\"" + ChatColor.translateAlternateColorCodes('&', ColorUtil.translateHexColors(text)) + ChatColor.WHITE + "\"");
     }
 
     @Subcommand("setLine")
@@ -40,7 +42,7 @@ public class MotdCommand extends BaseCommand {
 
         switch (type) {
             case NORMAL -> ConfigManager.normalLines.set(line-1, text);
-            case WHITELISTED -> ConfigManager.whitelistLines.set(line-1, text);
+            case WHITELIST -> ConfigManager.whitelistLines.set(line-1, text);
         }
 
         ConfigManager.save();
