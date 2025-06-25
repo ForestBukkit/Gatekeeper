@@ -84,7 +84,8 @@ public class WhitelistCommand extends BaseCommand {
             return;
         }
         WhitelistManager.addUUID(uuid);
-        sender.sendMessage(ChatColor.YELLOW + "Added " + ChatColor.WHITE + target.getName() + ChatColor.YELLOW + "to the whitelist.");
+        ConfigManager.save();
+        sender.sendMessage(ChatColor.YELLOW + "Added " + ChatColor.WHITE + target.getName() + ChatColor.YELLOW + " to the whitelist.");
     }
 
     @Subcommand("remove")
@@ -103,6 +104,7 @@ public class WhitelistCommand extends BaseCommand {
             return;
         }
         WhitelistManager.removeUUID(uuid);
+        ConfigManager.save();
         sender.sendMessage(ChatColor.YELLOW + "Removed " + ChatColor.WHITE + target.getName() + ChatColor.YELLOW + " from the whitelist.");
     }
 }
